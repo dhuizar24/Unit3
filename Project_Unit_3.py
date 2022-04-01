@@ -18,6 +18,7 @@ MONTHS = ['no month', 'January', 'February', 'March', 'April', 'June', 'July', '
 MONTHS_30_DAYS = ['April', 'June', 'September', 'November']
 current_day = 1
 current_month = 3
+days_this_rest = randrange(2, 6)
 
  #functions
 def choices():
@@ -30,7 +31,7 @@ def consume_food(days):
 
     food_consumed_this_turn = 5 * days 
 
-    food = 
+    food = 500
 
 
 def rest():
@@ -44,7 +45,8 @@ def rest():
     else: 
         
 
-    add_day(days_this_rest)
+        
+        add_day(days_this_rest)
     
 
 def hunt():
@@ -52,10 +54,8 @@ def hunt():
     
     days_this_hunt = random.randrange(2,6)
     food += 100 
+    print("You hunted")
     
-    
-
-
     add_day(days_this_rest)
 def travel():
     days_travel = random.randint(3,7)
@@ -79,6 +79,7 @@ def travel():
     print(f"You traveled {miles_traveled} miles")
 
     miles_left -= miles_traveled
+    add_day(days_travel)
 
 def status():
     print(f"You have {miles_left} miles to go ")
@@ -87,7 +88,8 @@ def status():
     print(f"You have {food} pounds of food")
 
 def add_day(days):
-    global current_day, current_month 
+    global current_day
+    global current_month
     current_day += days
 
     #time to roll over month
@@ -99,6 +101,11 @@ def add_day(days):
         if current_day > 31: 
             current_day -= 31
             current_month +=1 
+
+
+    
+    
+
 
 while loop: 
 
@@ -118,6 +125,14 @@ while loop:
         travel()
         
     elif choice == 'status':                         
+        status()
+    elif choice == 'quit':
+        loop = False
+        print("Game Over")
+    elif choice == 'help':
+        print("You can either rest, hunt, travel, look at status, or quit")
+    else:
+        print("Option not available")
 
 
 
